@@ -1,0 +1,3 @@
+Change example.com to the page you want to embed
+
+$ <iframe src="https://example.com" width="100%" height="600px" frameborder="0" allowfullscreen></iframe> $

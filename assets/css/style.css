@@ -1,0 +1,550 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333; /* Dark text color */
+}
+
+/* Ensure bot/user avatar remains a perfect circle */
+.abc-bubble .avatar {
+    width: 40px;  /* Fixed width */
+    height: 40px; /* Fixed height (same as width) */
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%; /* Ensures circular shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* White background for light theme */
+    border: 1px solid #ddd; /* Subtle light border */
+    margin-right: 10px; /* Spacing between avatar and text */
+    flex-shrink: 0; /* Prevents squeezing */
+}
+
+/* Ensure the icon inside the avatar remains centered */
+.abc-bubble .avatar i {
+    font-size: 20px; /* Adjust as needed */
+    color: #333; /* Dark color for contrast on white background */
+}
+
+/* Ensure proper spacing for general text but prevent unwanted extra margins */
+.abc-bubble .text {
+    display: inline-block;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+/* Reset margins and padding ONLY for direct children inside .text */
+.abc-bubble .text > p,
+.abc-bubble .text > ul,
+.abc-bubble .text > ol,
+.abc-bubble .text > blockquote,
+.abc-bubble .text > pre,
+.abc-bubble .text > code {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2em;
+}
+
+/* Allow nested elements (like lists inside blockquotes) to keep spacing */
+.abc-bubble .text blockquote {
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #ccc; /* Optional: Make blockquotes visually distinct */
+}
+
+/* Ensure lists inside blockquotes or other elements are still properly indented */
+.abc-bubble .text blockquote ul,
+.abc-bubble .text blockquote ol,
+.abc-bubble .text ul,
+.abc-bubble .text ol {
+    margin-left: 15px; /* Ensure list indentation remains */
+    padding-left: 15px;
+}
+
+/* Adjust inline elements like [b], [i], [u], and colors */
+.abc-bubble .text strong,
+.abc-bubble .text em,
+.abc-bubble .text u,
+.abc-bubble .text span {
+    display: inline;
+}
+
+/* Fix for [code] blocks (inline) */
+.abc-bubble .text code {
+    background: #f0f0f0;  /* Light background for code */
+    color: #333;         /* Dark text for contrast */
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: "Courier New", monospace;
+    font-size: 0.9em;
+}
+
+/* Allow full-width code blocks to be distinct */
+.abc-bubble .text pre {
+    background: #f0f0f0;  /* Light background for code blocks */
+    color: #333;         /* Dark text for contrast */
+    padding: 8px;
+    border-radius: 4px;
+    font-family: "Courier New", monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+
+.abc-input-container .toggle-text {
+    padding-left: 10px;
+    display: inline-block; /* Ensure it respects the padding */
+    vertical-align: middle;
+}
+
+.abc-bubble.user .text {
+    background-color: #e6e6e6; /* Light gray background for user messages */
+     text-align: right;
+    color: #333;
+}
+
+.abc-bubble.chatbot .text {
+    background-color: #fff; /* White background for chatbot messages */
+     text-align: left;
+     color: #333;
+}
+
+.switch {
+  /* switch */
+  --switch-width: 46px;
+  --switch-height: 24px;
+  --switch-bg: rgb(131, 131, 131);
+  --switch-checked-bg: rgb(0, 218, 80);
+  --switch-offset: calc((var(--switch-height) - var(--circle-diameter)) / 2);
+  --switch-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+  /* circle */
+  --circle-diameter: 18px;
+  --circle-bg: #fff;
+  --circle-shadow: 1px 1px 2px rgba(146, 146, 146, 0.45);
+  --circle-checked-shadow: -1px 1px 2px rgba(163, 163, 163, 0.45);
+  --circle-transition: var(--switch-transition);
+  /* icon */
+  --icon-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+  --icon-cross-color: var(--switch-bg);
+  --icon-cross-size: 6px;
+  --icon-checkmark-color: var(--switch-checked-bg);
+  --icon-checkmark-size: 10px;
+  /* effect line */
+  --effect-width: calc(var(--circle-diameter) / 2);
+  --effect-height: calc(var(--effect-width) / 2 - 1px);
+  --effect-bg: var(--circle-bg);
+  --effect-border-radius: 1px;
+  --effect-transition: all .2s ease-in-out;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch {
+  display: inline-block;
+}
+
+.switch svg {
+  -webkit-transition: var(--icon-transition);
+  -o-transition: var(--icon-transition);
+  transition: var(--icon-transition);
+  position: absolute;
+  height: auto;
+}
+
+.switch .checkmark {
+  width: var(--icon-checkmark-size);
+  color: var(--icon-checkmark-color);
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.switch .cross {
+  width: var(--icon-cross-size);
+  color: var(--icon-cross-color);
+}
+
+.slider {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  background: var(--switch-bg);
+  border-radius: 999px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  -webkit-transition: var(--switch-transition);
+  -o-transition: var(--switch-transition);
+  transition: var(--switch-transition);
+  cursor: pointer;
+}
+
+.circle {
+  width: var(--circle-diameter);
+  height: var(--circle-diameter);
+  background: var(--circle-bg);
+  border-radius: inherit;
+  -webkit-box-shadow: var(--circle-shadow);
+  box-shadow: var(--circle-shadow);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transition: var(--circle-transition);
+  -o-transition: var(--circle-transition);
+  transition: var(--circle-transition);
+  z-index: 1;
+  position: absolute;
+  left: var(--switch-offset);
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: var(--effect-width);
+  height: var(--effect-height);
+  left: calc(var(--switch-offset) + (var(--effect-width) / 2));
+  background: var(--effect-bg);
+  border-radius: var(--effect-border-radius);
+  -webkit-transition: var(--effect-transition);
+  -o-transition: var(--effect-transition);
+  transition: var(--effect-transition);
+}
+
+/* actions */
+
+.switch input:checked+.slider {
+  background: var(--switch-checked-bg);
+}
+
+.switch input:checked+.slider .checkmark {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.switch input:checked+.slider .cross {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.switch input:checked+.slider::before {
+  left: calc(100% - var(--effect-width) - (var(--effect-width) / 2) - var(--switch-offset));
+}
+
+.switch input:checked+.slider .circle {
+  left: calc(100% - var(--circle-diameter) - var(--switch-offset));
+  -webkit-box-shadow: var(--circle-checked-shadow);
+  box-shadow: var(--circle-checked-shadow);
+}
+
+.typing-chunk {
+    display: inline;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+/* Optional: Add a delay effect to each chunk for smoother transitions */
+.typing-chunk:nth-child(1) { transition-delay: 0s; }
+.typing-chunk:nth-child(2) { transition-delay: 0.1s; }
+.typing-chunk:nth-child(3) { transition-delay: 0.2s; }
+/* Add more delay styles as needed */
+
+
+.abc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.abc-container {
+    width: 600px;
+    height: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    text-align: center;
+}
+
+.abc-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 16px;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.abc-logo-message-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.abc-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.abc-logo {
+    height: 40px; /* Logo size 40px */
+}
+
+.abc-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    position: relative;
+    background-color: #fff;
+}
+
+.greeting-message {
+    font-size: 24px;
+    color: #333;
+}
+
+.hide-initial {
+    display: none;
+}
+
+.suggestions-popup b {
+    font-size: 18px; /* Điều chỉnh kích thước của văn bản trong thẻ <b> */
+}
+
+.suggestions-popup {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background: #f0f0f0;
+    border: 2px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.suggestions-popup ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.suggestions-popup li {
+    cursor: pointer;
+    padding: 5px 0;
+    transition: background 0.3s ease;
+    color: #333;
+}
+
+.suggestions-popup li:hover {
+    background: #ddd;
+}
+
+.abc-bubble {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user .abc-bubble {
+    justify-content: flex-end;
+}
+
+.chatbot .abc-bubble {
+    justify-content: flex-start;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.avatar i {
+    color: #333;
+}
+
+.text {
+    max-width: 80%;
+    padding: 12px;
+    border-radius: 15px;
+    background-color: #f0f0f0;
+    color: #333;
+    position: relative;
+}
+
+
+.typing-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 50%;
+    animation: typing 1s infinite alternate;
+}
+
+@keyframes typing {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+.abc-input-container {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+
+.abc-upload-button {
+    padding: 10px 20px;
+    color: #333;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    /*Remove background*/
+    background:none;
+    /*Remove hover effect*/
+    position: relative; /* Required for z-index */
+    z-index: 2;/* Buttons are on top */
+    margin-right: auto; /* Push the button to the left */
+}
+
+.abc-file-input {
+    display: none;
+}
+
+
+.abc-input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    /*Round the ends of input bar*/
+    border-radius: 20px;
+    font-size: 16px;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+    /* Input overlaps the buttons */
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    z-index: 1; /* Input behind the buttons */
+     padding-left: 50px; /* To avoid overlapping the upload button*/
+      padding-right: 50px;  /* To avoid overlapping the send button*/
+
+}
+
+
+.abc-send-button {
+   padding: 10px 20px;
+    color: #333;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    /*Remove background*/
+    background:none;
+    /*Remove hover effect*/
+    position: relative; /* Required for z-index */
+    z-index: 2; /* Buttons are on top */
+    margin-left: auto; /* Push the button to the right */
+}
+
+
+.abc-send-button i.fa-paper-plane {
+    color: #000; /* Make the icon black */
+}
+
+/*Voice interface*/
+.voice-interface {
+  /* Add styles here for the voice interface container */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.voice-interface.highlight {
+  /* Highlight effect */
+    box-shadow: 0 0 10px #007bff; /* Example highlight color */
+}
+
+
+/* Theme Switch Button */
+.theme-switch-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-switch-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px; /* Rounded square */
+    background-color: #444; /* Gray background */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.theme-switch-button:hover {
+    background-color: #555; /* Darker gray on hover */
+}
+
+.theme-switch-button i {
+    font-size: 20px;
+}
+.theme-switch-button.dark-mode {
+     background-color: #e0e0e0; /* Darker gray on hover */
+     color: #1a1a1a;
+}
+
+.theme-switch-button.dark-mode:hover {
+    background-color: #f1f1f1;
+     color: #1a1a1a;
+}

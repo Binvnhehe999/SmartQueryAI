@@ -1,0 +1,10 @@
+Replace example.com with the website you want to redirect to, "Button Name" is the name of the button
+
+$ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="cdn/button.css">
+</head>
+<body>
+    <a href="http://example.com" class="custom-button">I Want to Play!</a>
+</body>
+</html> $
