@@ -1,0 +1,7 @@
+Upload your mp3 file to Module/mp3/ , at the bottom replace the filename with your filename (eg myfile.mp3) , copy and paste into the Reply column
+
+$ <h2>Play File MP3</h2>
+<audio controls>
+  <source src="Module/audio/file.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio> $

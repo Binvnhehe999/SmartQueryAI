@@ -1,0 +1,1 @@
+I built this super simple module building system, to create a module you have to make sure the div class does not overlap with the interface files in the chatbot, put your code inside $ $ , for example $ Your code here $ , and chat.js will handle it for you

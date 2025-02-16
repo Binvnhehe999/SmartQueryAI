@@ -1,0 +1,26 @@
+# File Process
+ocr_api_key: "K00000000000000"
+
+# Gemini AI API 
+use_who_if_no_response: "true"  # Use Gemini if no match is found
+use_who_in_whole_process: "true" # Use Gemini for every question
+improve_reply_output: "true" # Use Gemini to improve chatbot reply
+enable_website_query: "true" # Allows the chatbot to access and view the website via the provided link.
+artificial_query: "true" # Use AI to analyze and select answers
+
+# Language for Chatbot
+chatbot_name: "SmartQuery Ai"
+default_chatbot_text: "YOUR_DEFAULT_CHATBOT_TEXT_HERE"
+ask_something_placeholder: "Ask something"
+chatbot_interface: "Chatbot Interface"
+reply_chatbot_text: "Sorry, I don't understand your question."
+welcome_to: "How can I help you today?"
+suggested_questions: "Suggested questions:"
+
+# Configurations for Chatbot
+confirmation_code: "false"  # Set to "false" to disable confirmation code functionality
+
+# Chat Interface Widget
+enable_suggestions: true # Set to false to disable suggestions popup
+enable_file_upload: true # Set to false to disable file upload option
+enable_advanced_feature: true # Set to false to disable memory enhancement feature

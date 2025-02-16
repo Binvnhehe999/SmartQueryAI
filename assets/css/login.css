@@ -1,0 +1,69 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F9F9F9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Login container styles */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* Nền trắng sẽ chiếm toàn bộ chiều cao của viewport */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 400px; /* Điều chỉnh kích thước tối đa nếu cần */
+    padding: 20px;
+}
+
+/* Logo */
+.login-container .logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+/* Form and button styles */
+.login-container h2 {
+    margin: 0 0 20px;
+}
+
+.login-container form {
+    width: 100%;
+}
+
+.login-container input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: #d9534f;
+    margin-bottom: 20px;
+}
