@@ -306,40 +306,45 @@ if ($currentStep == 4 && $_SERVER['REQUEST_METHOD'] == 'POST') {
     exit();
 }
 
-
-// --- NEW STEP 4.1: Endpoint Installation ---
+// --- CẬP NHẬT BƯỚC 4.1: CẤU HÌNH endpoint.php ---
 if ($currentStep == 4.1 && $_SERVER['REQUEST_METHOD'] == 'POST') {
-    $smartQueryApiKey = $_POST['smartquery_api_key'] ?? '';
-    $geminiEndpointApiKey = $_POST['gemini_endpoint_api_key'] ?? ''; // NEW: Gemini API Key for Endpoint
-    $useEndpoint = !isset($_POST['no_endpoint']); // Checkbox is "no_endpoint", so negate to get "useEndpoint"
+    $newApiKey = $_POST['new_api_key'] ?? ''; // Lấy API key mới từ form nhập liệu
+    $useEndpoint = !isset($_POST['no_endpoint']); // Nếu bỏ chọn "no_endpoint" thì không cài đặt
 
     if ($useEndpoint) {
-        // --- Read endpoint.php template and replace API keys ---
-        $endpointTemplateFile = 'endpoint.php.template'; // Create a template for endpoint.php
-        if (!file_exists($endpointTemplateFile)) {
-            die("Error: endpoint.php.template file not found!");
+        // Đọc nội dung file endpoint.php
+        $endpointFile = 'endpoint.php';
+        if (!file_exists($endpointFile)) {
+            die("Lỗi: Không tìm thấy file endpoint.php!");
         }
-        $endpointContent = file_get_contents($endpointTemplateFile);
-        $endpointContent = str_replace("define('SMARTQUERY_API_KEY', 'SmartQueryAI');", "define('SMARTQUERY_API_KEY', '" . $smartQueryApiKey . "');", $endpointContent);
-        // NEW: Replace Gemini API Key placeholder
-        $endpointContent = str_replace("\$apiKey = \$config['gemini_api_key'] ?? 'This is the location of the Gemini API';", "\$apiKey = '" . $geminiEndpointApiKey . "';", $endpointContent);
 
+        $endpointContent = file_get_contents($endpointFile);
 
-        // --- Write modified endpoint.php ---
-        if (file_put_contents('endpoint.php', $endpointContent) === false) {
-            die("Error: Failed to write to endpoint.php. Check file permissions.");
+        // Kiểm tra và thay thế API key "SmartQueryAI" thành API key mới
+        if (strpos($endpointContent, "'api_key'] !== 'SmartQueryAI'") !== false) {
+            $updatedContent = str_replace(
+                "'api_key'] !== 'SmartQueryAI'",
+                "'api_key'] !== '$newApiKey'",
+                $endpointContent
+            );
+
+            // Ghi nội dung đã chỉnh sửa vào endpoint.php
+            if (file_put_contents($endpointFile, $updatedContent) === false) {
+                die("Lỗi: Không thể cập nhật endpoint.php. Kiểm tra quyền ghi file.");
+            }
+        } else {
+            die("Lỗi: Không tìm thấy API key cũ trong endpoint.php để thay thế!");
         }
     } else {
-        // --- Delete endpoint.php if user chooses not to use it ---
+        // Nếu không sử dụng endpoint, có thể xóa file endpoint.php nếu tồn tại
         if (file_exists('endpoint.php')) {
             unlink('endpoint.php');
         }
     }
 
-    header('Location: install.php?step=5'); // Proceed to password step
+    header('Location: install.php?step=5'); // Tiếp tục bước tiếp theo
     exit();
 }
-
 
 
 // Step 5: Change Password
@@ -713,13 +718,11 @@ if ($currentStep == 3.1) {
         <h3>Endpoint (API) Installation</h3>
         <form method="POST">
             <div class="form-group">
-                <label for="smartquery_api_key">SmartQueryAI API Key (Legal API Key):</label>
-                <input type="text" name="smartquery_api_key" placeholder="Enter SmartQueryAI API Key" required>
+                <label for="new_api_key">New API Key (Required):</label>
+                <input type="text" name="new_api_key" placeholder="Enter Your API Key" required>
+
             </div>
-            <div class="form-group">
-                <label for="gemini_endpoint_api_key">Gemini API Key (For Endpoint.php):</label>
-                <input type="text" name="gemini_endpoint_api_key" placeholder="Enter Gemini API Key for Endpoint" required>
-            </div>
+
             <div class="checkbox-container">
                 <input type="checkbox" name="no_endpoint" id="no_endpoint">
                 <label for="no_endpoint">I do not use endpoint (API Server) - Skip Endpoint Installation and Delete endpoint.php</label>
