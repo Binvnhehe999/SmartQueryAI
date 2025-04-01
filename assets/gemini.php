@@ -2,40 +2,19 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$geminiApiKey = "AIzaSyBNLYLNo7gXXfy42woW4dCmX175AXwFJlw"; // Insert your actual API key here
+$geminiApiKey = "This is the location of the Gemini API"; // Hardcoded API Key. ADD YOUR API KEY HERE
 
-// Load internal guidelines from custom.json
-$customFile = __DIR__ . '/custom.json';
-$internalGuidelines = "";
-if (file_exists($customFile)) {
-    $customGuidelines = json_decode(file_get_contents($customFile), true);
-}
-$internalMessage = "";
-if ($customGuidelines) {
-    // Build a message that is internal only; instruct the AI not to repeat it.
-    $internalMessage .= "Internal AI Guidelines (do not include this text in your final answer):\n";
-    $internalMessage .= "Characteristics: " . $customGuidelines["What characteristics should AI have"] . "\n";
-    $internalMessage .= "Constraints: " . $customGuidelines["Constraints that AI must follow (rule)"] . "\n";
-    $internalMessage .= "Text Processing: " . $customGuidelines["Text processing documents"] . "\n\n";
-}
-
-// Get the user query from the request
+// Get the prompt and model name from the request
 $data = json_decode(file_get_contents("php://input"), true);
-$userQuery = $data['prompt'] ?? '';
-$modelName = $data['modelName'] ?? 'gemini-2.0-flash';
+$prompt = $data['prompt'] ?? '';
+$modelName = $data['modelName'] ?? 'gemini-2.0-flash'; // Default model if not provided
 
-if (!$userQuery) {
-    echo json_encode(["status" => "error", "message" => "No query provided"]);
+if(!$prompt) {
+    echo json_encode(["status" => "error", "message" => "No prompt provided"]);
     exit();
 }
 
-// Combine the internal guidelines with the user's query.
-// The instruction tells the AI to base its answer on these guidelines but not to output them.
-$combinedText = $internalMessage .
-    "User Query: " . $userQuery . "\n\n" .
-    "Based on the above internal guidelines, please provide an answer without repeating or referencing these internal instructions.";
-
-// Construct the payload for Gemini API using the combined text
+// Construct the URL with the dynamic model name
 $url = "https://generativelanguage.googleapis.com/v1beta/models/" . $modelName . ":generateContent?key=" . $geminiApiKey;
 
 $headers = [
@@ -47,7 +26,7 @@ $payload = [
          [
             "parts" => [
                 [
-                    "text" => $combinedText
+                    "text" => $prompt
                 ]
             ]
         ]
@@ -66,12 +45,12 @@ curl_close($ch);
 
 if ($httpcode === 200) {
     $responseData = json_decode($response, true);
-    if (isset($responseData['candidates'][0]['content']['parts'][0]['text'])) {
+    if(isset($responseData['candidates'][0]['content']['parts'][0]['text'])){
        echo json_encode($responseData['candidates'][0]['content']['parts'][0]['text'], JSON_UNESCAPED_UNICODE);
     } else {
-         echo json_encode(["status" => "error", "message" => "Gemini API returned an unexpected structure. Response: " . $response]);
+         echo json_encode(["status" => "error", "message" => "Gemini API returned an unexpected structure. Response: " . $response]); // Include the response for debugging
     }
 } else {
-     echo json_encode(["status" => "error", "message" => "Error calling Gemini API. Status code: " . $httpcode . ", Response: " . $response]);
+     echo json_encode(["status" => "error", "message" => "Error calling Gemini API. Status code: " . $httpcode . ", Response: " . $response]); // Include the response for debugging
 }
 ?>
