@@ -1,0 +1,10 @@
+{
+    "php.problems.scope": "all",
+    "php.validate.exclude": [
+        "**/vendor/**"
+    ],
+    "files.exclude": {
+        "**/vendor/**": true
+    },
+    "composer.enable": true
+}

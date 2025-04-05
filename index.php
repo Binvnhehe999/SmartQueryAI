@@ -1,5 +1,10 @@
 <?php
-$config = yaml_parse_file('assets/config.yml');
+
+require_once 'vendor/autoload.php';
+
+use Symfony\Component\Yaml\Yaml;
+
+$config = Yaml::parseFile('assets/config.yml');
 $default_text = $config['default_chatbot_text'];
 $enable_suggestions = isset($config['enable_suggestions']) ? filter_var($config['enable_suggestions'], FILTER_VALIDATE_BOOLEAN) : false;
  $enable_file_upload = isset($config['enable_file_upload']) ? filter_var($config['enable_file_upload'], FILTER_VALIDATE_BOOLEAN) : false;

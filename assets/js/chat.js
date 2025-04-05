@@ -108,22 +108,31 @@ document.addEventListener("DOMContentLoaded", function () {
                             'Content-Type': 'application/json'
                         }
                     })
-                        .then(response => response.json())
-                        .then(data => {
-                            removeTypingIndicator(typingChat);
-                            if (data.status === "success") {
-                                //updateChatWithTypingEffect(data.message, typingChat, 'chatbot');
-                                updateChatWithWordFadeEffect(data.message, typingChat, 'chatbot'); // Use the new function
-                            } else {
-                                //updateChatWithTypingEffect(data.message, typingChat, 'chatbot');
-                                updateChatWithWordFadeEffect(data.message, typingChat, 'chatbot'); // Use the new function
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! Status: ${response.status}`);
+                            }
+                            return response.text(); // Read as text to handle non-JSON responses
+                        })
+                        .then(text => {
+                            try {
+                                const data = JSON.parse(text); // Attempt to parse JSON
+                                removeTypingIndicator(typingChat);
+                                if (data.status === "success") {
+                                    updateChatWithWordFadeEffect(data.message, typingChat, 'chatbot'); // Use the new function
+                                } else {
+                                    updateChatWithWordFadeEffect(data.message, typingChat, 'chatbot'); // Use the new function
+                                }
+                            } catch (err) {
+                                console.error("Error parsing JSON:", err);
+                                removeTypingIndicator(typingChat);
+                                updateChatWithWordFadeEffect("Sorry, I'm having some trouble processing your request.", typingChat, 'chatbot'); // Use the new function
                             }
                         })
                         .catch(err => {
                             console.error("Error:", err);
                             removeTypingIndicator(typingChat);
-                            //updateChatWithTypingEffect("Sorry, I'm having some trouble processing your request.", typingChat, 'chatbot');
-                             updateChatWithWordFadeEffect("Sorry, I'm having some trouble processing your request.", typingChat, 'chatbot'); // Use the new function
+                            updateChatWithWordFadeEffect("Sorry, I'm having some trouble processing your request.", typingChat, 'chatbot'); // Use the new function
                         });
                     userInput.value = '';
                 }

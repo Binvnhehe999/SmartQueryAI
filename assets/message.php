@@ -1,4 +1,8 @@
 <?php
+require __DIR__ . '/../vendor/autoload.php'; // Load Composer autoloader
+
+use Symfony\Component\Yaml\Yaml;
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -7,7 +11,23 @@ session_start();
 global $db_prefix; // Declare global here
 
 require_once __DIR__ . '/db.php';
-$config = yaml_parse_file(__DIR__ . '/config.yml');
+
+header('Content-Type: application/json');
+
+try {
+    $config = Yaml::parseFile(__DIR__ . '/config.yml'); // Parse YAML file
+    $response = [
+        'status' => 'success',
+        'data' => $config
+    ];
+} catch (Exception $e) {
+    $response = [
+        'status' => 'error',
+        'message' => $e->getMessage()
+    ];
+}
+
+echo json_encode($response);
 
 // **Thêm hàm ghi log**
 function logError($message) {
