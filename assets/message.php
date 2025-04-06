@@ -7,7 +7,11 @@ session_start();
 global $db_prefix; // Declare global here
 
 require_once __DIR__ . '/db.php';
-$config = yaml_parse_file(__DIR__ . '/config.yml');
+use Symfony\Component\Yaml\Yaml;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$config = Yaml::parseFile(__DIR__ . '/config.yml');
 
 // **Thêm hàm ghi log**
 function logError($message) {
