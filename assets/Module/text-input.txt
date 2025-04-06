@@ -1,3 +1,0 @@
-This module is used to automatically enter text into the user's question input, replacing example with text.
-
-$ <li onclick="fillInput('example')">example</li> $

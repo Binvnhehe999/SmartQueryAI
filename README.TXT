@@ -6,8 +6,6 @@ You may not distribute or resell this project in any way, changing the original 
 
 Owned by Binvnhehe999 - SmartQuery AI project
 
-The modified version is editing: 6.5 - 8a
-
 // How to install //
 
 - set folders to 755 permissions (assets , css , js)
@@ -28,5 +26,7 @@ It is a one-time paid project that helps to provide better automated feedback wi
 
 // DEV //
 
-Version 6.6.3 Build 5
-Date modified 26/02/2025
+Version 6.6.3 Build 7
+Built from: 6.6.3_b6
+Date modified 06/04/2025
+

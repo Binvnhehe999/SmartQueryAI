@@ -1,3 +1,0 @@
-Rename the image.png file to the image file name
-
-$ <img src="module/image/image.png"> $
