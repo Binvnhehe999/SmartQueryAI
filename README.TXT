@@ -33,5 +33,6 @@ Date modified: 2025-04-06
 // Additional Notes //
 
 - Make sure to configure the database connection settings in the .env file.
+- Please delete the "information.php" file if you intend to let the public use the chatbot because it poses a potential security risk. 
 - For any customization, refer to the configuration files in the assets directory.
 - For funding and support, visit our PayPal: [paypal.me/MeoMongMo](https://paypal.me/MeoMongMo).
