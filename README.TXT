@@ -26,7 +26,7 @@ It is a one-time paid project that helps to provide better automated feedback wi
 
 // DEV //
 
-Version 6.6.3 Build 7
+Version 6.6.3 Build 7 - early access
 Built from: 6.6.3_b6
 Date modified 06/04/2025
 
