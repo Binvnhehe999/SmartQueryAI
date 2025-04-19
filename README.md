@@ -120,8 +120,5 @@ If you'd like to support further development, feel free to donate:
 
 For bugs, feature requests, or collaboration:
 
-- GitHub Issues (if available)
-- Email/DM via project page (if applicable)
-```
-
-Nếu bạn có logo, hình ảnh minh họa hoặc muốn thêm phần changelog, hướng dẫn sử dụng chi tiết hơn, mình có thể bổ sung thêm cho bạn!
+- GitHub Issues: https://github.com/Binvnhehe999/SmartQueryAI
+- Email/DM via project page: ladyservant.official@gmail.com
