@@ -9,8 +9,7 @@ global $db_prefix; // Declare global here
 require_once __DIR__ . '/db.php';
 use Symfony\Component\Yaml\Yaml;
 
-require_once __DIR__ . '/vendor/autoload.php';
-
+require_once __DIR__ . '/../vendor/autoload.php'; // Added '/..'
 $config = Yaml::parseFile(__DIR__ . '/config.yml');
 
 // **Thêm hàm ghi log**
