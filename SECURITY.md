@@ -50,7 +50,7 @@ Please **do not** report security vulnerabilities through public GitHub issues, 
 
 Instead, send an email to:
 
-**ladyservant.official@gmail.com**  *(<-- Maintainer: Replace this with your actual security contact email)*
+**ladyservant.official@gmail.com**  
 
 **Please include the following details in your report:**
 
