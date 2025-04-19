@@ -2,13 +2,14 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
 | Version | Supported          |
 | ------- | ------------------ |
-| 6.x.x >  | :white_check_mark: |
-| < 6.0.0   | :x:                |
+| Latest   | :white_check_mark: |
+| Patch - Fix - Release | :white_check_mark: |
+| From 6.x.x   | :white_check_mark: |
+| Below 6.0.0   | :x:                |
+
+*we encourage you to update your chatbot to the latest version when possible*
 
 ## Reporting a Vulnerability
 
