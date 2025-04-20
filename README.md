@@ -43,6 +43,7 @@ This project is dual-licensed:
 >
 > You must obtain a **Commercial Donor License** by donating $7.00 USD or more via PayPal:  
 > [https://paypal.me/MeoMongMo](https://paypal.me/MeoMongMo)
+>
 > You **purchased** this product on **Namelessmc.com**
 
 > Without the commercial license, **you are required to follow GPLv3 strictly**.  
