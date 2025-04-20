@@ -122,3 +122,4 @@ For bugs, feature requests, or collaboration:
 
 - GitHub Issues: https://github.com/Binvnhehe999/SmartQueryAI
 - Email/DM via project page: ladyservant.official@gmail.com
+- SmartQuery AI Discord: https://discord.gg/e6qnwBvAhC
