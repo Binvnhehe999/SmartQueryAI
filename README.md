@@ -21,18 +21,31 @@ A modern, user-friendly chatbot and feedback assistant powered by AI.
 
 **Project**: SmartQuery AI  
 **Author/Owner**: Binvnhehe999  
-**License**: GNU GENERAL PUBLIC LICENSE Version 3 (GPLv3)  
+**License**: Dual License (GPLv3 + Commercial Donor License)  
 **Date**: 29 June 2007
 
-This project is licensed under the **GPLv3** license.  
-You are **free to share and modify** this software under the terms of the license. However:
+This project is dual-licensed:
 
-> **You may NOT:**
-> - Distribute or resell this project in any way.
-> - Change the original code and publicly share or sell it.
+- **GNU GENERAL PUBLIC LICENSE Version 3 (GPLv3)** – You are free to use, share, and modify this software under the terms of the GPL license.  
+  See the included [`LICENSE`](./LICENSE) file for details.
 
-For full license details, please refer to the included `LICENSE` file.
+- **Commercial Donor License** – For users who donate **$5.99 USD or more**, a commercial-use license is available.  
+  This license allows commercial use, modification, and redistribution under specific conditions.
 
+> See [`COMMERCIAL-LICENSE.md`](./COMMERCIAL-LICENSE.md) for full details.
+
+> **Important Notice:**
+> SmartQueryAI is licensed under the GPLv3 license, which allows you to use, modify, and distribute this software freely, **as long as you comply with the GPLv3 terms** (including making source code available for redistributed versions).
+>
+> However, if you wish to:
+> - Use SmartQueryAI in **closed-source** or **commercial** projects **without releasing your modifications**
+> - Distribute a modified version **without following GPLv3**
+>
+> You must obtain a **Commercial Donor License** by donating $7.00 USD or more via PayPal:  
+> [https://paypal.me/MeoMongMo](https://paypal.me/MeoMongMo)
+
+> Without the commercial license, **you are required to follow GPLv3 strictly**.  
+> Failure to comply with either license terms may result in the revocation of usage rights.
 ---
 
 ## Installation
