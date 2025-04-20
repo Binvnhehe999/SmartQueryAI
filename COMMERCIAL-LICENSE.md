@@ -12,9 +12,10 @@ This project is dual-licensed under:
 You may use **SmartQueryAI** for **commercial purposes** under the following conditions:
 
 ### Eligibility
-- You have donated **at least $7.00 USD (Or you bought SmartQuery AI on namelessmc.com)** to the following PayPal link:
+- You have donated **at least $7.00 USD** to the following PayPal link:
   > [https://paypal.me/MeoMongMo](https://paypal.me/MeoMongMo)
 - You must keep a **record of your donation** (email confirmation, receipt, or screenshot).
+- You **purchased** this product on **Namelessmc.com**
 
 ### Permissions
 - You may:
