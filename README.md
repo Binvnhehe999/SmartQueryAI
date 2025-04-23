@@ -29,7 +29,7 @@ This project is dual-licensed:
 - **GNU GENERAL PUBLIC LICENSE Version 3 (GPLv3)** – You are free to use, share, and modify this software under the terms of the GPL license.  
   See the included [`LICENSE`](./LICENSE) file for details.
 
-- **Commercial Donor License** – For users who donate **$5.99 USD or more**, a commercial-use license is available.  
+- **Commercial Donor License** – For users who donate **$7.00 USD or more**, a commercial-use license is available.  
   This license allows commercial use, modification, and redistribution under specific conditions.
 
 > See [`COMMERCIAL-LICENSE.md`](./COMMERCIAL-LICENSE.md) for full details.
