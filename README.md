@@ -6,6 +6,7 @@ A modern, user-friendly chatbot and feedback assistant powered by AI.
 # Why choose SmartQueryAI project?
 
 This project though is AI powered, it is capable of working without AI API (Ability to work even without internet), especially it is capable of running right on basic php web (The project is developed on popular Free Website Hosting)
+
 ---
 
 ## Table of Contents
